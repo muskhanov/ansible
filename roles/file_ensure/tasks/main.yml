@@ -1,0 +1,19 @@
+---
+- name: Create dir
+  file:
+    path: "{{ dir_path }}"
+    state: directory
+- name: Create file
+  copy:
+    dest: "{{ dir_path }}/file1.txt"
+    content: "12321312321321321312\n"    
+- name: Create test 
+  user:
+    name: test
+    create_home: yes
+    shell: /bin/bash
+- name: Download file
+  get_url:
+    url: https://raw.githubusercontent.com/ansible/ansible/devel/README.rst
+    dest: "{{ dir_path }}"
+
